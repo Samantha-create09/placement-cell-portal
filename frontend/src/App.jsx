@@ -1,0 +1,121 @@
+import { Routes, Route } from "react-router-dom";
+
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+import StudentDashboard from "./pages/StudentDashboard";
+import CompanyDashboard from "./pages/CompanyDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+
+import Jobs from "./pages/Jobs";
+import Applications from "./pages/Applications";
+import ApplicationPage from "./pages/ApplicationPage";
+import PostJob from "./pages/PostJob";
+import ManageJobs from "./pages/ManageJobs";
+import JobDetails from "./pages/JobDetails";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
+function App() {
+  return (
+    <Routes>
+
+  {/* PUBLIC */}
+
+  <Route path="/" element={<LandingPage />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+
+  {/* STUDENT */}
+
+  <Route
+    path="/student-dashboard"
+    element={
+      <ProtectedRoute>
+        <StudentDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/jobs"
+    element={
+      <ProtectedRoute>
+        <Jobs />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/applications"
+    element={
+      <ProtectedRoute>
+        <Applications />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/apply/:id"
+    element={
+      <ProtectedRoute>
+        <ApplicationPage />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* COMPANY */}
+
+  <Route
+    path="/company-dashboard"
+    element={
+      <ProtectedRoute>
+        <CompanyDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/post-job"
+    element={
+      <ProtectedRoute>
+        <PostJob />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/manage-jobs"
+    element={
+      <ProtectedRoute>
+        <ManageJobs />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/job/:id"
+    element={
+      <ProtectedRoute>
+        <JobDetails />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* ADMIN */}
+
+  <Route
+    path="/admin-dashboard"
+    element={
+      <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+</Routes>
+  );
+}
+
+export default App;

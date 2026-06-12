@@ -1,0 +1,24 @@
+.jobs-page {
+    padding: 30px;
+  }
+  
+  .jobs-grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .job-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.05);
+  }
+  
+  .job-card button {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+  }

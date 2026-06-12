@@ -1,0 +1,188 @@
+.applications-page{
+  padding:40px;
+  background:#f4f7fc;
+  min-height:100vh;
+}
+
+.page-title{
+  font-size:32px;
+  margin-bottom:25px;
+  color:#111827;
+}
+
+.applications-grid{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.application-card{
+  width:100%;
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.08);
+}
+
+.application-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.application-header h3{
+  margin:0;
+  color:#111827;
+}
+
+.status-badge{
+  padding:8px 15px;
+  border-radius:30px;
+  font-weight:600;
+}
+
+.status-applied{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.status-shortlisted{
+  background:#fef3c7;
+  color:#b45309;
+}
+
+.status-selected{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.status-rejected{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.application-info{
+  display:grid;
+  grid-template-columns:
+  repeat(2,1fr);
+  gap:15px;
+  margin-top:15px;
+}
+
+.application-info p{
+  margin:0;
+}
+
+.resume-btn{
+  margin-top:20px;
+  display:inline-block;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.empty-state{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+}
+
+.application-card{
+  background:#ffffff;
+  border-radius:22px;
+  padding:28px;
+  margin-bottom:22px;
+  box-shadow:
+  0 12px 30px rgba(0,0,0,.08);
+
+  border-left:6px solid #2563eb;
+
+  transition:.3s;
+}
+
+.application-card:hover{
+  transform:translateY(-4px);
+}
+
+.application-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.application-top h3{
+  font-size:22px;
+  color:#111827;
+}
+
+.status-pill{
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  color:white;
+}
+
+.status-applied{
+  font-size:22px;
+  align-items:center;
+  background:#eb25c3;
+  margin-top:20px;
+  display:inline-block;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.status-shortlisted{
+  background:#facc15;
+  color:black;
+}
+
+.status-selected{
+  background:#16a34a;
+}
+
+.status-rejected{
+  background:#ef4444;
+}
+
+.status-interview{
+  background:#9333ea;
+}
+
+.application-details{
+  display:grid;
+  grid-template-columns:
+  repeat(2,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+
+.application-details p{
+  margin:0;
+  color:#374151;
+}
+
+.resume-btn{
+  display:inline-block;
+  margin-top:20px;
+  background:#2563eb;
+  color:white;
+  padding:12px 18px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.resume-btn:hover{
+  background:#1d4ed8;
+}
