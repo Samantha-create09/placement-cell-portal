@@ -10,7 +10,8 @@ const {
 
   applyJob,
   getApplications,
-  getApplicationsByJob
+  getApplicationsByJob,
+  updateApplication
 
 } = require("../controllers/applicationController");
 
@@ -55,6 +56,11 @@ router.get(
 router.get(
   "/job/:jobId",
   getApplicationsByJob
+);
+
+router.put(
+  "/:id",
+  updateApplication
 );
 
 module.exports = router;

@@ -1,0 +1,39 @@
+.company-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(350px,1fr));
+    gap:20px;
+  }
+  
+  .company-card{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+  }
+  
+  .company-card h2{
+    margin-bottom:10px;
+  }
+  
+  .action-row{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+  }
+  
+  .verify-btn{
+    background:#10b981;
+    color:white;
+  }
+  
+  .unverify-btn{
+    background:#f59e0b;
+    color:white;
+  }
+  
+  .delete-btn{
+    background:#ef4444;
+    color:white;
+  }

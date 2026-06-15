@@ -34,10 +34,26 @@
         type:Number,
         default:0
     },
+
+    isPaused:{
+        type:Boolean,
+        default:false
+      },
+
     createdBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
-    }
+      },
+      
+      interviews:{
+        type:Number,
+        default:0
+      },
+      
+      selected:{
+        type:Number,
+        default:0
+      }
 
     },
     {

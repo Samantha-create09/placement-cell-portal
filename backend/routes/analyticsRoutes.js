@@ -5,6 +5,15 @@ const router = express.Router();
 const Application =
 require("../models/Application");
 
+const {
+  getAnalytics
+} = require("../controllers/analyticsController");
+
+router.get(
+  "/admin",
+  getAnalytics
+);
+
 router.get("/:studentId", async (req, res) => {
 
   try {

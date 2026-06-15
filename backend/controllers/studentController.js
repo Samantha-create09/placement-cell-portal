@@ -19,19 +19,25 @@ exports.createStudent = async (req, res) => {
 
 // Get All Students
 exports.getStudents = async (req, res) => {
-    try {
 
-        const students = await Student.find();
+  try {
 
-        res.status(200).json(students);
+    const students =
+      await User.find({
+        role: "student"
+      });
 
-    } catch (error) {
+    res.json(students);
 
-        res.status(500).json({
-            message: error.message
-        });
+  }
+  catch(error){
 
-    }
+    res.status(500).json({
+      message:error.message
+    });
+
+  }
+
 };
 
 const User = require("../models/User");

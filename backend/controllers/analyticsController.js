@@ -2,31 +2,41 @@ const Student = require("../models/Student");
 const Company = require("../models/Company");
 const Job = require("../models/Job");
 const Application = require("../models/Application");
+const User = require("../models/User");
 
 exports.getAnalytics = async (req, res) => {
-    try {
 
-        const totalStudents = await Student.countDocuments();
+  try {
 
-        const totalCompanies = await Company.countDocuments();
+    const totalStudents =
+      await User.countDocuments({
+        role: "student"
+      });
 
-        const totalJobs = await Job.countDocuments();
+    const totalCompanies =
+      await User.countDocuments({
+        role: "company"
+      });
 
-        const totalApplications =
-            await Application.countDocuments();
+    const totalJobs =
+      await Job.countDocuments();
 
-        res.status(200).json({
-            totalStudents,
-            totalCompanies,
-            totalJobs,
-            totalApplications
-        });
+    const totalApplications =
+      await Application.countDocuments();
 
-    } catch (error) {
+    res.json({
+      totalStudents,
+      totalCompanies,
+      totalJobs,
+      totalApplications
+    });
 
-        res.status(500).json({
-            message: error.message
-        });
+  } catch(error) {
 
-    }
+    res.status(500).json({
+      message:error.message
+    });
+
+  }
+
 };

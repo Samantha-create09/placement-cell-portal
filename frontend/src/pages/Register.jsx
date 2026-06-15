@@ -100,6 +100,7 @@ function Register() {
             <option value="mentor">
               Mentor
             </option>
+
           </select>
 
           {formData.role === "company" && (

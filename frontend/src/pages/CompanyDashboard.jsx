@@ -11,6 +11,7 @@ function CompanyDashboard() {
 
   const [jobs, setJobs] = useState([]);
   const [company, setCompany] = useState(null);
+  const [applications, setApplications] = useState([]);
 
   const [analytics, setAnalytics] = useState({
     activeJobs: 0,
@@ -57,31 +58,58 @@ function CompanyDashboard() {
         await axios.get(
           "http://localhost:5000/api/jobs"
         );
-
+        
       const companyJobs =
         res.data.filter(
 
           job =>
-
             String(job.createdBy) ===
-            String(user.id)
+            String(user._id || user.id)
 
+        );
+
+        console.log(
+          "Current User ID:",
+          user.id
+        );
+    
+        console.log(
+          "All Jobs:",
+          res.data
+        );
+    
+        console.log(
+          "Filtered Jobs:",
+          companyJobs
         );
 
       setJobs(companyJobs);
 
-      let totalApplicants = 0;
-      let totalShortlisted = 0;
+      const appRes =
+  await axios.get(
+    "http://localhost:5000/api/applications"
+  );
 
-      companyJobs.forEach(job => {
+const companyApplications =
+  appRes.data.filter(app =>
+    companyJobs.some(job =>
+      job._id === app.jobId
+    )
+  );
 
-        totalApplicants +=
-          job.applicants || 0;
+setApplications(
+  companyApplications
+);
 
-        totalShortlisted +=
-          job.shortlisted || 0;
+     const totalApplicants =
+  companyApplications.length;
 
-      });
+const totalShortlisted =
+  companyApplications.filter(
+    app =>
+      app.status ===
+      "Shortlisted"
+  ).length;
 
       setAnalytics({
 
@@ -120,11 +148,14 @@ function CompanyDashboard() {
       <aside className="company-sidebar">
 
         <h2>
-          PlacementPro
+        🎓PlacementPro
         </h2>
-
+        
+        <p className="portal-label">
+        Company Portal
+        </p>
+        
         <nav>
-
           <Link to="/company-dashboard">
             Dashboard
           </Link>
@@ -158,7 +189,7 @@ function CompanyDashboard() {
 
               Welcome,
               {" "}
-              {company?.companyName}
+              {company?.companyName || user?.name}
               {" "}
               👋
 
@@ -230,11 +261,10 @@ function CompanyDashboard() {
             </div>
 
             <h2>
-              {company?.companyName}
+            {company?.companyName || user?.name}
             </h2>
-
             <p>
-              {user?.email}
+            {company?.hrEmail || user?.email}
             </p>
 
             <p>

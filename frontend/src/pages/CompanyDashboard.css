@@ -10,8 +10,7 @@
     background:
     linear-gradient(
       180deg,
-      #2563eb,
-      #7c3aed
+     black
     );
   
     color:white;
@@ -197,4 +196,10 @@
   
     background:#f8fafc;
   
+  }
+  .portal-label{
+    color:#94a3b8;
+    font-size:14px;
+    margin-top:-10px;
+    margin-bottom:20px;
   }

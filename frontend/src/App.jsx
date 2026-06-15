@@ -15,6 +15,11 @@ import PostJob from "./pages/PostJob";
 import ManageJobs from "./pages/ManageJobs";
 import JobDetails from "./pages/JobDetails";
 
+import AdminStudents from "./pages/AdminStudents";
+import AdminCompanies from "./pages/AdminCompanies";
+import AdminJobs from "./pages/AdminJobs";
+import AdminApplications from "./pages/AdminApplications";  
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -113,7 +118,42 @@ function App() {
       </ProtectedRoute>
     }
   />
+ 
+ <Route
+  path="/admin-students"
+  element={
+    <ProtectedRoute>
+      <AdminStudents />
+    </ProtectedRoute>
+  }
+/>
 
+<Route
+  path="/admin-companies"
+  element={
+    <ProtectedRoute>
+      <AdminCompanies />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin-jobs"
+  element={
+    <ProtectedRoute>
+      <AdminJobs />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin-applications"
+  element={
+    <ProtectedRoute>
+      <AdminApplications />
+    </ProtectedRoute>
+  }
+/>
 </Routes>
   );
 }

@@ -10,10 +10,6 @@ function ManageJobs() {
   const [jobs, setJobs] =
     useState([]);
 
-  const [selectedJob,
-    setSelectedJob] =
-    useState(null);
-
   useEffect(() => {
 
     fetchJobs();
@@ -38,7 +34,9 @@ function ManageJobs() {
 
               const apps =
                 await axios.get(
+
                   `http://localhost:5000/api/applications/job/${job._id}`
+
                 );
 
               return {
@@ -50,7 +48,9 @@ function ManageJobs() {
 
               };
 
-            }catch{
+            }
+
+            catch{
 
               return {
 
@@ -70,232 +70,140 @@ function ManageJobs() {
         jobsWithApplicants
       );
 
-      if(
-        jobsWithApplicants.length
-      ){
+    }
 
-        setSelectedJob(
-          jobsWithApplicants[0]
-        );
+    catch(error){
 
-      }
-
-    } catch(err){
-
-      console.log(err);
+      console.log(error);
 
     }
 
   };
 
-  return (
+  return(
 
     <div className="manage-page">
 
-      <div className="left-panel">
+      <div className="manage-header">
 
-        <div className="panel-header">
+        <h1>
+          Manage Jobs
+        </h1>
 
-          <h1>
-            Manage Jobs
-          </h1>
+        <p>
+          View and manage all active jobs
+        </p>
 
-          <p>
-            View and manage
-            all active jobs
-          </p>
+      </div>
 
-        </div>
+      <div className="jobs-grid">
 
         {
 
-          jobs.map(job => (
+          jobs.map(job=>(
 
             <div
-
               key={job._id}
-
-              className={
-                selectedJob?._id ===
-                job._id
-
-                ?
-
-                "job-card active"
-
-                :
-
-                "job-card"
-              }
-
-              onClick={()=>
-                setSelectedJob(job)
-              }
+              className="job-card"
             >
 
-              <h3>
+              <h2>
                 {job.title}
-              </h3>
+              </h2>
 
               <p>
-                {job.company}
+                🏢 {job.company}
               </p>
 
-              <div className="job-meta">
+              <p>
+                📍 {job.location}
+              </p>
 
-                <span>
-                  👥
-                  {job.applicants}
-                </span>
+              <p>
+                💰 ₹{job.salary}
+              </p>
 
-                <span>
-                  ⭐
-                  {job.shortlisted || 0}
-                </span>
+              <p>
+                💼 {job.jobType}
+              </p>
 
-              </div>
+              <p>
 
-              <small>
+                Skills:
 
-                Posted:
-                {" "}
+                {
+
+                  job.skills?.join(", ")
+
+                }
+
+              </p>
+
+              <p>
+
+                Deadline:
+
                 {
 
                   new Date(
-                    job.createdAt
+                    job.deadline
                   ).toLocaleDateString()
 
                 }
 
-              </small>
+              </p>
+
+              <div className="job-stats">
+
+                <div className="stat-card applicants">
+
+                  <span>
+                    Applicants
+                  </span>
+
+                  <strong>
+                    {job.applicants}
+                  </strong>
+
+                </div>
+
+                <div className="stat-card shortlisted">
+
+                  <span>
+                    Shortlisted
+                  </span>
+
+                  <strong>
+                    {job.shortlisted || 0}
+                  </strong>
+
+                </div>
+
+              </div>
+
+              <button
+
+                className="open-btn"
+
+                onClick={()=>
+
+                  navigate(
+
+                    `/job/${job._id}`
+
+                  )
+
+                }
+
+              >
+
+                Open
+
+              </button>
 
             </div>
 
           ))
-
-        }
-
-      </div>
-
-      <div className="right-panel">
-
-        {
-
-          selectedJob && (
-
-            <>
-
-              <div className="job-banner">
-
-                <div>
-
-                  <h1>
-                    {
-                      selectedJob.title
-                    }
-                  </h1>
-
-                  <p>
-                    {
-                      selectedJob.company
-                    }
-                  </p>
-
-                </div>
-
-                <button
-
-                  onClick={() =>
-                    navigate(
-                      `/job/${selectedJob._id}`
-                    )
-                  }
-
-                  className="view-btn"
-                >
-                  View Applications
-                </button>
-
-              </div>
-
-              <div className="details-grid">
-
-                <div className="detail-box">
-
-                  <h4>
-                    Location
-                  </h4>
-
-                  <p>
-                    {
-                      selectedJob.location
-                    }
-                  </p>
-
-                </div>
-
-                <div className="detail-box">
-
-                  <h4>
-                    Salary
-                  </h4>
-
-                  <p>
-                    ₹
-                    {
-                      selectedJob.salary
-                    }
-                  </p>
-
-                </div>
-
-                <div className="detail-box">
-
-                  <h4>
-                    Applicants
-                  </h4>
-
-                  <p>
-                    {
-                      selectedJob.applicants
-                    }
-                  </p>
-
-                </div>
-
-                <div className="detail-box">
-
-                  <h4>
-                    Shortlisted
-                  </h4>
-
-                  <p>
-                    {
-                      selectedJob.shortlisted || 0
-                    }
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="description-box">
-
-                <h3>
-                  Description
-                </h3>
-
-                <p>
-                  {
-                    selectedJob.description
-                  }
-                </p>
-
-              </div>
-
-            </>
-
-          )
 
         }
 

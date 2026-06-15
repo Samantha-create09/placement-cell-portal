@@ -54,7 +54,8 @@ useState({
           skills: updatedSkills
         }
       );
-  
+      console.log(res.data);
+
       setSkills(res.data.skills);
   
       setSkillInput("");
@@ -169,11 +170,25 @@ useState({
   }, [user]);
 
   const fetchStudentProfile = async () => {
-    const res = await axios.get(
-      `http://localhost:5000/api/students/${user.id}`
-    );
+
+    if (!user?.id) return;
   
-    setSkills(res.data.skills || []);
+    try {
+  
+      const res = await axios.get(
+        `http://localhost:5000/api/students/${user.id}`
+      );
+  
+      setSkills(
+        res.data.skills || []
+      );
+  
+    } catch (err) {
+  
+      console.log(err);
+  
+    }
+  
   };
   useEffect(() => {
     fetchStudentProfile();
@@ -336,11 +351,7 @@ useState({
         </p>
 
         <a
-          href={
-    resumeUrl.startsWith("http")
-    ? resumeUrl
-    : `http://localhost:5000${resumeUrl}`
-}
+          href={`http://localhost:5000/uploads/${resumeUrl}`}
           target="_blank"
           rel="noreferrer"
           className="resume-view-btn"
@@ -483,4 +494,5 @@ job.deadline
     </div>
   );
 }
+
 export default StudentDashboard;

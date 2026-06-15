@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
                 return res.status(403).json({
                   message: "Admin registration not allowed"
                 });
-              }    
+              }  
 
         const existingUser = await User.findOne({ email });
 
@@ -92,18 +92,24 @@ exports.login = async (req, res) => {
             });
         }
 
-        if (!user.isVerified) {
-
+        if (
+            user.role !== "admin" &&
+            !user.isVerified
+          ) {
+          
             return res.status(403).json({
               message:
                 "Your account is awaiting admin approval."
             });
           
           }
+
         const isMatch = await bcrypt.compare(
             password,
             user.password
         );
+
+        console.log("PASSWORD MATCH:", isMatch);
 
         if (!isMatch) {
             return res.status(400).json({

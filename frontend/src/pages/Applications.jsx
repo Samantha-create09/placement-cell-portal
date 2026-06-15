@@ -159,6 +159,43 @@ function Applications() {
     </a>
   }
 
+{
+  app.interviewDate && (
+
+    <div className="interview-box">
+
+      <h4>
+        📅 Interview Scheduled
+      </h4>
+
+      <p>
+
+        <strong>Date:</strong>
+        {" "}
+        {app.interviewDate}
+
+      </p>
+
+      {
+        app.meetingLink && (
+
+          <a
+            href={app.meetingLink}
+            target="_blank"
+            rel="noreferrer"
+            className="meeting-btn"
+          >
+            Join Interview
+          </a>
+
+        )
+      }
+
+    </div>
+
+  )
+}
+
 </div>
           ))
 

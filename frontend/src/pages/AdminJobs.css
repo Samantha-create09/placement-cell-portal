@@ -1,0 +1,164 @@
+.admin-page{
+    padding:30px;
+  }
+  
+  .job-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+  }
+  
+  .job-card{
+    background:white;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+  }
+  
+  .job-card:hover{
+    transform:translateY(-5px);
+  }
+  
+  .job-card h2{
+    color:#1e293b;
+    margin-bottom:12px;
+  }
+  
+  .job-card p{
+    margin:8px 0;
+    color:#475569;
+  }
+  
+  .action-row{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+  }
+
+  
+  .delete-btn{
+    flex:1;
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  
+  .job-card input{
+    width:100%;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+  }
+
+  .job-stats{
+
+    display:grid;
+  
+    grid-template-columns:
+    repeat(4,1fr);
+  
+    gap:12px;
+  
+    margin-top:25px;
+  
+    padding-top:18px;
+  
+    border-top:
+    1px solid #e5e7eb;
+  
+  }
+  
+  .stat-item{
+    flex:1;
+    text-align:center;
+  }
+  
+  .stat-item span{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  
+  .stat-item strong{
+    display:block;
+    font-size:24px;
+    font-weight:700;
+  }
+  
+  .stat-item{
+    text-align:center;
+    padding:10px;
+    border-radius:12px;
+  }
+  
+  .stat-item span{
+    display:block;
+    font-size:12px;
+    margin-bottom:5px;
+  }
+  
+  .stat-item strong{
+    font-size:20px;
+  }
+  
+  .applications{
+    background:#eff6ff;
+    color:#2563eb;
+  }
+  
+  .shortlisted{
+    background:#fef3c7;
+    color:#d97706;
+  }
+  
+  .interviews{
+    background:#ede9fe;
+    color:#7c3aed;
+  }
+  
+  .selected{
+    background:#dcfce7;
+    color:#16a34a;
+  }
+  
+  .pause-btn{
+    flex:1;
+    background:#f59e0b;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  
+  .resume-btn{
+    flex:1;
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .pause-btn{
+    background:#f59e0b !important;
+    color:white !important;
+  }
+  
+  .resume-btn{
+    background:#16a34a !important;
+    color:white !important;
+  }
+  
+  .delete-btn{
+    background:#dc2626 !important;
+    color:white !important;
+  }

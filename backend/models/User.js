@@ -24,6 +24,21 @@ const userSchema = new mongoose.Schema({
     default: "student"
   },
 
+  skills: {
+    type: [String],
+    default: []
+  },
+  
+  resumeUrl: {
+    type: String,
+    default: ""
+  },
+  
+  companyDocument: {
+    type: String,
+    default: ""
+  },
+  
   isVerified: {
     type: Boolean,
     default: false

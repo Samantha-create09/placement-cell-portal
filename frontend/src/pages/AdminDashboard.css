@@ -1,0 +1,220 @@
+.admin-dashboard{
+    display:flex;
+    min-height:100vh;
+    background:#f8fafc;
+  }
+  
+  .admin-sidebar{
+    width:260px;
+    background:#0f172a;
+    color:white;
+    padding:25px;
+  }
+  
+  .admin-sidebar h2{
+    margin-bottom:6px;
+  }
+  
+  .portal-label{
+    color:#94a3b8;
+    margin-bottom:25px;
+  }
+  
+  .admin-sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  
+  .admin-sidebar a{
+    text-decoration:none;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+  }
+  
+  .admin-sidebar a:hover{
+    background:#1e293b;
+  }
+  
+  .logout-btn{
+    margin-top:30px;
+    width:100%;
+  }
+  
+  .admin-main{
+    flex:1;
+    padding:30px;
+  }
+  
+  .welcome-section{
+    margin-bottom:30px;
+  }
+  
+  .analytics-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+  }
+  
+  .analytics-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
+  }
+  
+  .analytics-card h3{
+    color:#64748b;
+  }
+  
+  .analytics-card p{
+    font-size:32px;
+    font-weight:700;
+    margin-top:10px;
+  }
+
+  .analytics-card span{
+    font-size:40px;
+  }
+
+  .analytics-card h3{
+  color:#334155;
+}
+
+.analytics-card p{
+  color:#0f172a;
+}
+  
+  .students{
+    background:linear-gradient(
+      135deg,
+      #2563eb,
+      #60a5fa
+    );
+  }
+  
+  .companies{
+    background:linear-gradient(
+      135deg,
+      #7c3aed,
+      #a78bfa
+    );
+  }
+  
+  .jobs{
+    background:linear-gradient(
+      135deg,
+      #f59e0b,
+      #fbbf24
+    );
+  }
+  
+  .applications{
+    background:linear-gradient(
+      135deg,
+      #10b981,
+      #34d399
+    );
+  }
+
+  .students-card{
+    border-left:6px solid #3b82f6;
+  }
+  
+  .companies-card{
+    border-left:6px solid #8b5cf6;
+  }
+  
+  .jobs-card{
+    border-left:6px solid #10b981;
+  }
+  
+  .applications-card{
+    border-left:6px solid #f59e0b;
+  }
+
+  .company-card{
+
+    background:white;
+    border-radius:20px;
+    padding:24px;
+  
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+  
+    transition:.25s;
+  
+  }
+  
+  .company-card:hover{
+  
+    transform:
+    translateY(-4px);
+  
+  }
+  
+  .company-card h2{
+  
+    color:#0f172a;
+    margin-bottom:8px;
+  
+  }
+  
+  .company-card p{
+  
+    color:#64748b;
+    margin:8px 0;
+  
+  }
+  
+  .company-card a{
+  
+    display:inline-block;
+  
+    margin-top:10px;
+  
+    text-decoration:none;
+  
+    font-weight:600;
+  
+    color:#2563eb;
+  
+  }
+  
+  .action-row{
+  
+    display:flex;
+    gap:12px;
+  
+    margin-top:18px;
+  
+  }
+  
+  .verified-badge{
+  
+    background:#dcfce7;
+    color:#15803d;
+  
+    padding:6px 12px;
+    border-radius:999px;
+  
+    font-size:13px;
+    font-weight:600;
+  
+  }
+  
+  .pending-badge{
+  
+    background:#fef3c7;
+    color:#b45309;
+  
+    padding:6px 12px;
+    border-radius:999px;
+  
+    font-size:13px;
+    font-weight:600;
+  
+  }
