@@ -1,0 +1,76 @@
+.admin-page{
+    padding:30px;
+  }
+  
+  .application-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(370px,1fr));
+    gap:20px;
+  }
+  
+  .application-card{
+    background:white;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+  }
+  
+  .application-card h2{
+    margin-bottom:10px;
+    color:#1e293b;
+  }
+  
+  .status-badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#e0e7ff;
+    color:#4338ca;
+    font-weight:600;
+    margin-bottom:15px;
+  }
+  
+  .application-card p{
+    margin:8px 0;
+    color:#475569;
+  }
+  
+  .resume-btn{
+    display:inline-block;
+    margin-top:12px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:10px;
+  }
+  
+  .interview-box{
+    margin-top:15px;
+    padding:15px;
+    background:#f8fafc;
+    border-radius:12px;
+  }
+  
+  .meeting-btn{
+    display:inline-block;
+    margin-top:10px;
+    background:#7c3aed;
+    color:white;
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:10px;
+  }
+  
+  .delete-btn{
+    width:100%;
+    margin-top:18px;
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+  }

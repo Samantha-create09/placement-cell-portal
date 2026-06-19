@@ -197,3 +197,32 @@ async(req,res)=>{
   }
 
 };
+
+const Application =
+require("../models/Application");
+
+exports.deleteApplication =
+async(req,res)=>{
+
+  try{
+
+    await Application.findByIdAndDelete(
+      req.params.id
+    );
+
+    res.json({
+      message:
+      "Application deleted"
+    });
+
+  }
+
+  catch(error){
+
+    res.status(500).json({
+      message:error.message
+    });
+
+  }
+
+};

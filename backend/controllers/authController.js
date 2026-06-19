@@ -62,7 +62,20 @@ if(role === "student"){
         req.body.location || "",
   
       website:
-        req.body.website || ""
+        req.body.website || "",
+
+    
+  companyDocument:
+
+  req.file
+
+  ?
+
+  `/uploads/company-documents/${req.file.filename}`
+
+  :
+
+  ""
   
     });
   

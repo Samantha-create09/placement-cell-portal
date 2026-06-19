@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function PostJob() {
 const navigate = useNavigate();
+const { user } = useAuth();
   const [job,setJob] = useState({
     
     title:"",
@@ -38,10 +40,7 @@ const navigate = useNavigate();
 
     ...job,
 
-    createdBy:
-      JSON.parse(
-        localStorage.getItem("user")
-      ).id
+    createdBy:user.id
 
   }
 );

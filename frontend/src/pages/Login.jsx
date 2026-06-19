@@ -25,6 +25,18 @@ function Login() {
         formData
       );
 
+      if(formData.role !== res.data.user.role){
+
+        alert(
+          `This account belongs to ${res.data.user.role}`
+        );
+      
+        return;
+      
+      }
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       // store token + user globally
       login(res.data);
 
@@ -61,7 +73,7 @@ function Login() {
 
         <p>
           A smart campus recruitment platform connecting students,
-          companies and mentors.
+          companies, mentors and placement coordinators.
         </p>
 
         <div className="stats-preview">

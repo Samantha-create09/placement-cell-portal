@@ -5,9 +5,24 @@ const router = express.Router();
 const {
     register,
     login
-} = require("../controllers/authController");
 
-router.post("/register", register);
+} = require("../controllers/authController");
+const companyUpload =
+require(
+  "../middleware/companyUpload"
+);
+
+router.post(
+
+  "/register",
+
+  companyUpload.single(
+    "companyDocument"
+  ),
+
+  register
+
+);
 
 router.post("/login", login);
 

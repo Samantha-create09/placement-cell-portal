@@ -1,1 +1,25 @@
 @import "./Login.css";
+.document-label{
+
+    display:block;
+  
+    margin-bottom:8px;
+  
+    font-weight:600;
+  
+    color:#1e293b;
+  
+  }
+  
+  .document-info{
+  
+    font-size:14px;
+  
+    color:#64748b;
+    margin-top:10px;
+    margin-bottom:9px;
+  
+    line-height:1.5;
+  
+  }
+ 

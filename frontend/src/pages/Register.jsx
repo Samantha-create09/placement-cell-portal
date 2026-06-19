@@ -19,34 +19,105 @@ function Register() {
     website: ""
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [companyDocument,setCompanyDocument] =
+  useState(null);
 
+  const handleChange = (e) => {
+
+    if(e.target.type === "file"){
+  
+      setFormData({
+  
+        ...formData,
+  
+        [e.target.name]:
+        e.target.files[0]
+  
+      });
+  
+    }
+  
+    else{
+  
+      setFormData({
+  
+        ...formData,
+  
+        [e.target.name]:
+        e.target.value
+  
+      });
+  
+    }
+  
+  };
   const handleRegister = async () => {
 
     try {
-
-      await axios.post(
-        "http://localhost:5000/api/auth/register",
-        formData
-      );
-
-      alert("Registration Successful!");
-
-      navigate("/login");
-
-    } catch (err) {
-        console.log(err);
-      
-        alert(
-          err.response?.data?.message ||
-          "Registration Failed"
+  
+      const data =
+        new FormData();
+  
+      Object.keys(formData)
+        .forEach(key=>{
+  
+          data.append(
+            key,
+            formData[key]
+          );
+  
+        });
+  
+      if(
+        companyDocument
+      ){
+  
+        data.append(
+          "companyDocument",
+          companyDocument
         );
+  
       }
+  
+      await axios.post(
+  
+        "http://localhost:5000/api/auth/register",
+  
+        data,
+  
+        {
+  
+          headers:{
+            "Content-Type":
+            "multipart/form-data"
+          }
+  
+        }
+  
+      );
+  
+      alert(
+        "Registration Successful!"
+      );
+  
+      navigate("/login");
+  
+    }
+  
+    catch(err){
+  
+      console.log(err);
+  
+      alert(
+  
+        err.response?.data?.message ||
+  
+        "Registration Failed"
+  
+      );
+  
+    }
+  
   };
 
   return (
@@ -68,6 +139,12 @@ function Register() {
           connecting students, companies,
           mentors and placement coordinators.
         </p>
+        
+        <div className="stats-preview">
+          <div className="mini-card"><h3>500+</h3><span>Students</span></div>
+          <div className="mini-card"><h3>120+</h3><span>Companies</span></div>
+          <div className="mini-card"><h3>95%</h3><span>Placement</span></div>
+        </div>
 
       </div>
 
@@ -130,15 +207,33 @@ function Register() {
       onChange={handleChange}
     />
 
+<label className="document-label">
+
+  Company Verification Document
+
+</label>
+<p className="document-info">
+
+Upload Any 1 - GST Certificate,
+MSME Certificate,
+Startup India Certificate,
+Corporate Identification Number (CIN) Registration,
+Certificate of Incorporation
+or Company PAN Card.
+
+</p>
+<input
+  type="file"
+  accept=".pdf,.jpg,.jpeg,.png"
+  onChange={(e)=>
+    setCompanyDocument(
+      e.target.files[0]
+    )
+  }
+/>
+
   </>
 )}
-
-          <input
-            name="name"
-            placeholder="Full Name"
-            onChange={handleChange}
-          />
-
           <input
             name="email"
             type="email"

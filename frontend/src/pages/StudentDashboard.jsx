@@ -191,9 +191,15 @@ useState({
   
   };
   useEffect(() => {
-    fetchStudentProfile();
-  }, []);
 
+    if(user?.id){
+  
+      fetchStudentProfile();
+  
+    }
+  
+  }, [user]);
+  
   return (
     <div className="dashboard">
 

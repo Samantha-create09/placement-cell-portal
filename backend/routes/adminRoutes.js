@@ -5,7 +5,8 @@ const {
   deleteStudent,
   toggleVerification,
   getCompanies,
-  deleteCompany
+  deleteCompany,
+  deleteApplication
 } = require(
   "../controllers/adminController"
 );
@@ -40,5 +41,13 @@ router.get(
 router.delete(
   "/company/:id",
   deleteCompany
+);
+
+router.delete(
+
+  "/application/:id",
+
+  deleteApplication
+
 );
 module.exports = router; 
