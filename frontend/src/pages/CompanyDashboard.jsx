@@ -101,31 +101,50 @@ setApplications(
   companyApplications
 );
 
-     const totalApplicants =
-  companyApplications.length;
+const totalApplicants =
+companyApplications.length;
 
 const totalShortlisted =
-  companyApplications.filter(
-    app =>
-      app.status ===
-      "Shortlisted"
-  ).length;
+companyApplications.filter(
 
-      setAnalytics({
+app =>
 
-        activeJobs:
-          companyJobs.length,
+app.status === "Shortlisted"
 
-        applicants:
-          totalApplicants,
+||
 
-        shortlisted:
-          totalShortlisted,
+app.status === "Interview Scheduled"
 
-        interviews: 0
+||
 
-      });
+app.status === "Selected"
 
+).length;
+
+const totalInterviews =
+companyApplications.filter(
+
+app =>
+
+app.status === "Interview Scheduled"
+
+).length;
+
+setAnalytics({
+
+activeJobs:
+companyJobs.length,
+
+applicants:
+totalApplicants,
+
+shortlisted:
+totalShortlisted,
+
+interviews:
+totalInterviews
+
+});
     } catch(err){
 
       console.log(err);

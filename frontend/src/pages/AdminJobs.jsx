@@ -17,17 +17,16 @@ const [applications, setApplications] = useState([]);
 
     try {
   
-      const jobsRes =
-        await axios.get(
-          "http://localhost:5000/api/jobs"
-        );
-  
+      const res =
+await axios.get(
+"http://localhost:5000/api/jobs"
+);
+setJobs(res.data);
+
       const appsRes =
         await axios.get(
           "http://localhost:5000/api/applications"
         );
-  
-      setJobs(jobsRes.data);
   
       setApplications(
         appsRes.data
@@ -57,32 +56,6 @@ const [applications, setApplications] = useState([]);
       await axios.delete(
         `http://localhost:5000/api/jobs/${id}`
       );
-
-      fetchJobs();
-
-    }
-
-    catch(error){
-
-      console.log(error);
-
-    }
-
-  };
-
-  const saveJob = async()=>{
-
-    try{
-
-      await axios.put(
-
-        `http://localhost:5000/api/jobs/${editingJob._id}`,
-
-        editingJob
-
-      );
-
-      setEditingJob(null);
 
       fetchJobs();
 
@@ -166,7 +139,7 @@ const [applications, setApplications] = useState([]);
 
           app =>
 
-            app.jobId === job._id
+            app.jobId.toString() === job._id.toString()
 
         ).length
 
@@ -190,7 +163,7 @@ const [applications, setApplications] = useState([]);
 
           app =>
 
-            app.jobId === job._id &&
+            app.jobId.toString() === job._id.toString() &&
 
             app.status === "Shortlisted"
 
@@ -216,7 +189,7 @@ const [applications, setApplications] = useState([]);
 
           app =>
 
-            app.jobId === job._id &&
+            app.jobId.toString() === job._id.toString() &&
 
             app.status ===
             "Interview Scheduled"
@@ -243,7 +216,7 @@ const [applications, setApplications] = useState([]);
 
           app =>
 
-            app.jobId === job._id &&
+            app.jobId.toString() === job._id.toString() &&
 
             app.status === "Selected"
 
