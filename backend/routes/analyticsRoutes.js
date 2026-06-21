@@ -18,17 +18,41 @@ router.get("/:studentId", async (req, res) => {
 
   try {
 
-    const applications =
-      await Application.find();
+    const Student =
+require("../models/Student");
+
+const student =
+await Student.findOne({
+
+userId: req.params.studentId
+
+});
+
+const applications =
+await Application.find({
+
+email: student.email
+
+});
 
     const totalApplications =
       applications.length;
 
-    const shortlisted =
+      const shortlisted =
       applications.filter(
-        app =>
-        app.status ===
-        "Shortlisted"
+      
+      app =>
+      
+      app.status === "Shortlisted"
+      
+      ||
+      
+      app.status === "Interview Scheduled"
+      
+      ||
+      
+      app.status === "Selected"
+      
       ).length;
 
     const interviews =

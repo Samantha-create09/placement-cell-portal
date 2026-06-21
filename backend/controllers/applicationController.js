@@ -9,23 +9,31 @@ async(req,res)=>{
     const application =
       await Application.create({
 
-        ...req.body,
-
+        studentId:req.body.studentId,
+        
+        jobId:req.body.jobId,
+        
+        fullName:req.body.fullName,
+        
+        email:req.body.email,
+        
+        cgpa:req.body.cgpa,
+        
+        status:"Applied",
+        
         skills:
-          req.body.skills
-            ? req.body.skills
-                .split(",")
-                .map(skill =>
-                  skill.trim()
-                )
-            : [],
-
+        req.body.skills
+        ? req.body.skills
+        .split(",")
+        .map(skill=>skill.trim())
+        : [],
+        
         resume:
-          req.file
-          ? `/uploads/${req.file.filename}`
-          : ""
-
-      });
+        req.file
+        ? `/uploads/${req.file.filename}`
+        : ""
+        
+        })
 
     res.status(201).json(
       application

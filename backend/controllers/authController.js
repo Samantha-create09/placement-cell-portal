@@ -121,6 +121,9 @@ exports.login = async (req, res) => {
             password,
             user.password
         );
+console.log("Entered Password:", password);
+console.log("Stored Hash:", user.password);
+console.log("Password Match:", isMatch);
 
         console.log("PASSWORD MATCH:", isMatch);
 
