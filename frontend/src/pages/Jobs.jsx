@@ -14,7 +14,7 @@ function Jobs() {
     try {
 
       const res = await axios.get(
-        '${import.meta.env.VITE_API_URL}/api/jobs'
+        `${import.meta.env.VITE_API_URL}/api/jobs`
       );
 
       setJobs(res.data);

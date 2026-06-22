@@ -56,7 +56,7 @@ function CompanyDashboard() {
 
       const res =
         await axios.get(
-          '${import.meta.env.VITE_API_URL}/api/jobs'
+          `${import.meta.env.VITE_API_URL}/api/jobs`
         );
         
       const companyJobs =
@@ -87,7 +87,7 @@ function CompanyDashboard() {
 
       const appRes =
   await axios.get(
-    '${import.meta.env.VITE_API_URL}/api/applications'
+    `${import.meta.env.VITE_API_URL}/api/applications`
   );
 
 const companyApplications =

@@ -20,7 +20,7 @@ function AdminStudents() {
 
       const res =
       await axios.get(
-        '${import.meta.env.VITE_API_URL}/api/students'
+        `${import.meta.env.VITE_API_URL}/api/students`
       );
 
       setStudents(res.data);

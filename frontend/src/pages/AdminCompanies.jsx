@@ -19,7 +19,7 @@ function AdminCompanies(){
   
       const res =
         await axios.get(
-          '${import.meta.env.VITE_API_URL}/api/admin/companies'
+          `${import.meta.env.VITE_API_URL}/api/admin/companies`
         );
   
       console.log(res.data);
