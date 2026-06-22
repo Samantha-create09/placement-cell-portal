@@ -8,7 +8,9 @@ function SmartSearch() {
   const navigate = useNavigate();
 
   const [jobs, setJobs] = useState([]);
+  const [jobType,setJobType] = useState("");
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [sortBy,setSortBy] = useState("");
 
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
@@ -84,6 +86,63 @@ function SmartSearch() {
 
     }
 
+    if(jobType){
+
+        results = results.filter(
+        
+        job =>
+        
+        job.jobType === jobType
+        
+        );
+        
+        }
+
+        if(sortBy==="salary"){
+
+            results.sort(
+            (a,b)=>
+            Number(b.salary)-Number(a.salary)
+            );
+            
+            }
+
+            if(sortBy==="newest"){
+
+                results.sort(
+                
+                (a,b)=>
+                
+                new Date(b.createdAt)-new Date(a.createdAt)
+                
+                );
+                
+                }
+
+                if(sortBy==="deadline"){
+
+                    results.sort(
+                    
+                    (a,b)=>
+                    
+                    new Date(a.deadline)-new Date(b.deadline)
+                    
+                    );
+                    
+                    }
+
+                    if(sortBy==="match"){
+
+                        results.sort(
+                        
+                        (a,b)=>
+                        
+                        b.skills.length-a.skills.length
+                        
+                        );
+                        
+                        }
+                        
     setFilteredJobs(results);
 
   };
@@ -165,6 +224,72 @@ function SmartSearch() {
           />
 
         </div>
+
+        <div className="input-box">
+
+<label>
+Job Type
+</label>
+
+<select
+value={jobType}
+onChange={(e)=>setJobType(e.target.value)}
+>
+
+<option value="">
+All Types
+</option>
+
+<option value="Full Time">
+Full Time
+</option>
+
+<option value="Internship">
+Internship
+</option>
+
+<option value="Part Time">
+Part Time
+</option>
+
+</select>
+
+</div>
+
+<div className="input-box">
+
+<label>
+Sort By
+</label>
+
+<select
+value={sortBy}
+onChange={(e)=>setSortBy(e.target.value)}
+>
+
+<option value="">
+None
+</option>
+
+<option value="newest">
+Newest
+</option>
+
+<option value="salary">
+Highest Salary
+</option>
+
+<option value="deadline">
+Deadline
+</option>
+
+<option value="match">
+Best Match
+</option>
+
+</select>
+
+</div>
 
       </div>
 
