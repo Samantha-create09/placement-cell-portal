@@ -19,12 +19,12 @@ function AdminApplications(){
 
       const appsRes =
         await axios.get(
-          "http://localhost:5000/api/applications"
+          "${import.meta.env.VITE_API_URL}/api/applications"
         );
 
       const jobsRes =
         await axios.get(
-          "http://localhost:5000/api/jobs"
+          "${import.meta.env.VITE_API_URL}/api/jobs"
         );
 
       const jobs =
@@ -85,7 +85,7 @@ function AdminApplications(){
 
       await axios.delete(
 
-        `http://localhost:5000/api/admin/application/${id}`
+        `${import.meta.env.VITE_API_URL}/api/admin/application/${id}`
 
       );
 
@@ -218,7 +218,7 @@ function AdminApplications(){
                 <a
 
                   href={
-                    `http://localhost:5000${app.resume}`
+                    `${import.meta.env.VITE_API_URL}${app.resume}`
                   }
 
                   target="_blank"

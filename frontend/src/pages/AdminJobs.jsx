@@ -19,13 +19,13 @@ const [applications, setApplications] = useState([]);
   
       const res =
 await axios.get(
-"http://localhost:5000/api/jobs"
+"${import.meta.env.VITE_API_URL}/api/jobs"
 );
 setJobs(res.data);
 
       const appsRes =
         await axios.get(
-          "http://localhost:5000/api/applications"
+          "${import.meta.env.VITE_API_URL}/api/applications"
         );
   
       setApplications(
@@ -54,7 +54,7 @@ setJobs(res.data);
     try{
 
       await axios.delete(
-        `http://localhost:5000/api/jobs/${id}`
+        `${import.meta.env.VITE_API_URL}/api/jobs/${id}`
       );
 
       fetchJobs();
@@ -264,7 +264,7 @@ setJobs(res.data);
 
         await axios.put(
 
-          `http://localhost:5000/api/jobs/${job._id}`,
+          `${import.meta.env.VITE_API_URL}/api/jobs/${job._id}`,
 
           {
             isPaused:

@@ -35,7 +35,7 @@ const [editData, setEditData] =
 
       const res =
         await axios.get(
-          `http://localhost:5000/api/jobs/${id}`
+          `${import.meta.env.VITE_API_URL}/api/jobs/${id}`
         );
 
       setJob(res.data);
@@ -56,7 +56,7 @@ const [editData, setEditData] =
 
         const res =
           await axios.get(
-            `http://localhost:5000/api/applications/job/${id}`
+            `${import.meta.env.VITE_API_URL}/api/applications/job/${id}`
           );
 
         setApplications(
@@ -81,7 +81,7 @@ const [editData, setEditData] =
 
         await axios.put(
 
-          `http://localhost:5000/api/applications/${applicationId}`,
+          `${import.meta.env.VITE_API_URL}/api/applications/${applicationId}`,
 
           data
 
@@ -111,7 +111,7 @@ const [editData, setEditData] =
       try {
 
         await axios.delete(
-          `http://localhost:5000/api/jobs/${id}`
+          `${import.meta.env.VITE_API_URL}/api/jobs/${id}`
         );
 
         alert(
@@ -135,7 +135,7 @@ const [editData, setEditData] =
       try {
     
         await axios.put(
-          `http://localhost:5000/api/jobs/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/jobs/${id}`,
           editData
         );
     
@@ -544,7 +544,7 @@ const [editData, setEditData] =
   app.resume &&
 
   <a
-  href={`http://localhost:5000${app.resume}`}
+  href={`${import.meta.env.VITE_API_URL}${app.resume}`}
     target="_blank"
     rel="noreferrer"
     className="resume-btn"

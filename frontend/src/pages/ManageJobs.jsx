@@ -22,7 +22,7 @@ function ManageJobs() {
 
       const res =
         await axios.get(
-          "http://localhost:5000/api/jobs"
+          "${import.meta.env.VITE_API_URL}/api/jobs"
         );
 
       const jobsWithApplicants =
@@ -35,7 +35,7 @@ function ManageJobs() {
               const apps =
                 await axios.get(
 
-                  `http://localhost:5000/api/applications/job/${job._id}`
+                  `${import.meta.env.VITE_API_URL}/api/applications/job/${job._id}`
 
                 );
 

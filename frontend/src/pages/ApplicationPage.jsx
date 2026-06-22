@@ -78,7 +78,7 @@ function ApplicationPage() {
       }
   
       await axios.post(
-        "http://localhost:5000/api/applications",
+        "${import.meta.env.VITE_API_URL}/api/applications",
         data,
         {
           headers: {

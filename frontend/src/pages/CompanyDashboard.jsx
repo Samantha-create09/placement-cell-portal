@@ -37,7 +37,7 @@ function CompanyDashboard() {
 
       const res =
         await axios.get(
-          `http://localhost:5000/api/companies/${user.id}`
+          `${import.meta.env.VITE_API_URL}/api/companies/${user.id}`
         );
 
       setCompany(res.data);
@@ -56,7 +56,7 @@ function CompanyDashboard() {
 
       const res =
         await axios.get(
-          "http://localhost:5000/api/jobs"
+          "${import.meta.env.VITE_API_URL}/api/jobs"
         );
         
       const companyJobs =
@@ -87,7 +87,7 @@ function CompanyDashboard() {
 
       const appRes =
   await axios.get(
-    "http://localhost:5000/api/applications"
+    "${import.meta.env.VITE_API_URL}/api/applications"
   );
 
 const companyApplications =

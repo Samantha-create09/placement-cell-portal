@@ -29,7 +29,7 @@ function Applications() {
         const res =
           await axios.get(
 
-            `http://localhost:5000/api/applications/student/${user.email}`
+            `${import.meta.env.VITE_API_URL}/api/applications/student/${user.email}`
 
           );
 
@@ -150,7 +150,7 @@ function Applications() {
     app.resume &&
 
     <a
-      href={`http://localhost:5000${app.resume}`}
+      href={`${import.meta.env.VITE_API_URL}${app.resume}`}
       target="_blank"
       rel="noreferrer"
       className="resume-btn"

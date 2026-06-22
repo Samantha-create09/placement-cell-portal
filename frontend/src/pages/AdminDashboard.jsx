@@ -32,7 +32,7 @@ function AdminDashboard() {
 
       const res =
         await axios.get(
-          "http://localhost:5000/api/analytics/admin"
+          "${import.meta.env.VITE_API_URL}/api/analytics/admin"
         );
 
       setAnalytics(res.data);

@@ -49,7 +49,7 @@ useState({
       ];
   
       const res = await axios.put(
-        `http://localhost:5000/api/students/${user.id}/skills`,
+        `${import.meta.env.VITE_API_URL}/api/students/${user.id}/skills`,
         {
           skills: updatedSkills
         }
@@ -85,7 +85,7 @@ useState({
     try {
   
       await axios.post(
-        `http://localhost:5000/api/students/resume/${user.id}`,
+        `${import.meta.env.VITE_API_URL}/api/students/resume/${user.id}`,
         formData
       );
   
@@ -103,7 +103,7 @@ useState({
     try {
   
       const res = await axios.get(
-        "http://localhost:5000/api/jobs"
+        "${import.meta.env.VITE_API_URL}/api/jobs"
       );
   
       setJobs(res.data);
@@ -124,7 +124,7 @@ useState({
   const fetchAnalytics = async () => {
 
     const res = await axios.get(
-      `http://localhost:5000/api/analytics/${user.id}`
+      `${import.meta.env.VITE_API_URL}/api/analytics/${user.id}`
     );
   
     setAnalytics(res.data);
@@ -141,7 +141,7 @@ useState({
     try {
   
       const res = await axios.get(
-        `http://localhost:5000/api/students/${user.id}`
+        `${import.meta.env.VITE_API_URL}/api/students/${user.id}`
       );
   
       setSkills(
@@ -176,7 +176,7 @@ useState({
     try {
   
       const res = await axios.get(
-        `http://localhost:5000/api/students/${user.id}`
+        `${import.meta.env.VITE_API_URL}/api/students/${user.id}`
       );
   
       setSkills(
@@ -357,7 +357,7 @@ useState({
         </p>
 
         <a
-          href={`http://localhost:5000/uploads/${resumeUrl}`}
+          href={`${import.meta.env.VITE_API_URL}/uploads/${resumeUrl}`}
           target="_blank"
           rel="noreferrer"
           className="resume-view-btn"

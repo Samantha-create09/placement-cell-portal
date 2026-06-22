@@ -19,7 +19,7 @@ function AdminCompanies(){
   
       const res =
         await axios.get(
-          "http://localhost:5000/api/admin/companies"
+          "${import.meta.env.VITE_API_URL}/api/admin/companies"
         );
   
       console.log(res.data);
@@ -50,7 +50,7 @@ function AdminCompanies(){
 
       await axios.delete(
 
-        `http://localhost:5000/api/admin/company/${id}`
+        `${import.meta.env.VITE_API_URL}/api/admin/company/${id}`
 
       );
 
@@ -140,7 +140,7 @@ function AdminCompanies(){
 
         await axios.put(
 
-          `http://localhost:5000/api/admin/toggle-verification/${company._id}`
+          `${import.meta.env.VITE_API_URL}/api/admin/toggle-verification/${company._id}`
 
         );
 

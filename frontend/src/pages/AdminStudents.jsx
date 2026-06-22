@@ -20,7 +20,7 @@ function AdminStudents() {
 
       const res =
       await axios.get(
-        "http://localhost:5000/api/students"
+        "${import.meta.env.VITE_API_URL}/api/students"
       );
 
       setStudents(res.data);
@@ -39,7 +39,7 @@ function AdminStudents() {
     try{
 
       await axios.delete(
-        `http://localhost:5000/api/admin/student/${id}`
+        `${import.meta.env.VITE_API_URL}/api/admin/student/${id}`
       );
 
       fetchStudents();
@@ -96,7 +96,7 @@ function AdminStudents() {
 
     <a
       href={
-        `http://localhost:5000/uploads/${student.resumeUrl}`
+        `${import.meta.env.VITE_API_URL}/uploads/${student.resumeUrl}`
       }
       target="_blank"
       rel="noreferrer"
@@ -182,7 +182,7 @@ function AdminStudents() {
   
     await axios.put(
   
-      `http://localhost:5000/api/admin/toggle-verification/${student._id}`
+      `${import.meta.env.VITE_API_URL}/api/admin/toggle-verification/${student._id}`
   
     );
   
