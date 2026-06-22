@@ -230,6 +230,10 @@ useState({
   Jobs
 </Link>
 
+<Link to="/smart-search">
+  Smart Search
+</Link>
+
 <Link to="/applications">
   Applications
 </Link>

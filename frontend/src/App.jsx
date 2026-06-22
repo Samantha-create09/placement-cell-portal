@@ -20,6 +20,8 @@ import AdminCompanies from "./pages/AdminCompanies";
 import AdminJobs from "./pages/AdminJobs";
 import AdminApplications from "./pages/AdminApplications";  
 
+import SmartSearch from "./pages/SmartSearch";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -154,6 +156,12 @@ function App() {
     </ProtectedRoute>
   }
 />
+
+<Route
+path="/smart-search"
+element={<SmartSearch/>}
+/>
+
 </Routes>
   );
 }
