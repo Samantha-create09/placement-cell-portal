@@ -1,212 +1,259 @@
 import "./SmartSearch.css";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function SmartSearch() {
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const [jobs,setJobs]=useState([]);
-const [filteredJobs,setFilteredJobs]=useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
 
-const [search,setSearch]=useState("");
-const [location,setLocation]=useState("");
-const [jobType,setJobType]=useState("");
+  const [title, setTitle] = useState("");
+  const [company, setCompany] = useState("");
+  const [skill, setSkill] = useState("");
+  const [salary, setSalary] = useState("");
 
-useEffect(()=>{
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
-fetchJobs();
+  const fetchJobs = async () => {
 
-},[]);
+    try {
 
-const fetchJobs=async()=>{
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/jobs`
+      );
 
-try{
+      setJobs(res.data);
+      setFilteredJobs(res.data);
 
-const res=await axios.get(
-`${import.meta.env.VITE_API_URL}/api/jobs`
-);
+    }
 
-setJobs(res.data);
-setFilteredJobs(res.data);
+    catch (error) {
 
-}
+      console.log(error);
 
-catch(error){
+    }
 
-console.log(error);
+  };
 
-}
+  const handleSearch = () => {
 
-};
+    let results = [...jobs];
 
-useEffect(()=>{
+    if (title) {
 
-let results=[...jobs];
+      results = results.filter(
+        job =>
+          job.title.toLowerCase()
+          .includes(title.toLowerCase())
+      );
 
-if(search){
+    }
 
-results=results.filter(job=>
+    if (company) {
 
-job.title.toLowerCase().includes(search.toLowerCase())
+      results = results.filter(
+        job =>
+          job.company.toLowerCase()
+          .includes(company.toLowerCase())
+      );
 
-||
+    }
 
-job.company.toLowerCase().includes(search.toLowerCase())
+    if (skill) {
 
-||
+      results = results.filter(
+        job =>
+          job.skills.join(" ")
+            .toLowerCase()
+            .includes(skill.toLowerCase())
+      );
 
-job.skills.join(" ").toLowerCase().includes(search.toLowerCase())
+    }
 
-);
+    if (salary) {
 
-}
+      results = results.filter(
+        job =>
+          Number(job.salary) >= Number(salary)
+      );
 
-if(location){
+    }
 
-results=results.filter(
+    setFilteredJobs(results);
 
-job=>
+  };
 
-job.location.toLowerCase().includes(location.toLowerCase())
+  return (
 
-);
+    <div className="smart-search-page">
 
-}
+      <h1>
+        🔍 Smart Job Search
+      </h1>
 
-if(jobType){
+      <div className="search-container">
 
-results=results.filter(
+        <div className="input-box">
 
-job=>job.jobType===jobType
+          <label>
+            Job Title
+          </label>
 
-);
+          <input
+            type="text"
+            placeholder="Java Developer"
+            value={title}
+            onChange={(e) =>
+              setTitle(e.target.value)
+            }
+          />
 
-}
+        </div>
 
-setFilteredJobs(results);
+        <div className="input-box">
 
-},[search,location,jobType,jobs]);
+          <label>
+            Company
+          </label>
 
-return(
+          <input
+            type="text"
+            placeholder="Infosys"
+            value={company}
+            onChange={(e) =>
+              setCompany(e.target.value)
+            }
+          />
 
-<div className="smart-search-page">
+        </div>
 
-<h1>
-🔍 Smart Job Search
-</h1>
+        <div className="input-box">
 
-<div className="search-filters">
+          <label>
+            Skills
+          </label>
 
-<input
-type="text"
-placeholder="Search title, company or skill..."
-value={search}
-onChange={(e)=>setSearch(e.target.value)}
-/>
+          <input
+            type="text"
+            placeholder="React"
+            value={skill}
+            onChange={(e) =>
+              setSkill(e.target.value)
+            }
+          />
 
-<input
-type="text"
-placeholder="Location"
-value={location}
-onChange={(e)=>setLocation(e.target.value)}
-/>
+        </div>
 
-<select
-value={jobType}
-onChange={(e)=>setJobType(e.target.value)}
->
+        <div className="input-box">
 
-<option value="">
-All Types
-</option>
+          <label>
+            Minimum Salary
+          </label>
 
-<option value="Full Time">
-Full Time
-</option>
+          <input
+            type="number"
+            placeholder="50000"
+            value={salary}
+            onChange={(e) =>
+              setSalary(e.target.value)
+            }
+          />
 
-<option value="Internship">
-Internship
-</option>
+        </div>
 
-<option value="Part Time">
-Part Time
-</option>
+      </div>
 
-</select>
+      <button
+        className="search-btn"
+        onClick={handleSearch}
+      >
+        Find Jobs
+      </button>
 
-</div>
+      <div className="search-grid">
 
-<div className="search-grid">
+        {
 
-{
+          filteredJobs.length === 0 ?
 
-filteredJobs.map(job=>(
+            <div className="empty-results">
 
-<div
-className="search-card"
-key={job._id}
->
+              No results found...
 
-<h2>
-{job.title}
-</h2>
+            </div>
 
-<p>
-🏢 {job.company}
-</p>
+            :
 
-<p>
-📍 {job.location}
-</p>
+            filteredJobs.map(job => (
 
-<p>
-💰 ₹{job.salary}
-</p>
+              <div
+                className="search-card"
+                key={job._id}
+              >
 
-<p>
-💼 {job.jobType}
-</p>
+                <h2>
+                  {job.title}
+                </h2>
 
-<div className="skill-tags">
+                <p>
+                  🏢 {job.company}
+                </p>
 
-{
+                <p>
+                  📍 {job.location}
+                </p>
 
-job.skills.map((skill,index)=>(
+                <p>
+                  💰 ₹{job.salary}
+                </p>
 
-<span key={index}>
-{skill}
-</span>
+                <p>
+                  💼 {job.jobType}
+                </p>
 
-))
+                <div className="skill-tags">
 
-}
+                  {
 
-</div>
+                    job.skills.map((skill, index) => (
 
-<button
-className="apply-btn"
-onClick={()=>
-navigate(`/apply/${job._id}`)
-}
->
+                      <span key={index}>
+                        {skill}
+                      </span>
 
-Apply
+                    ))
 
-</button>
+                  }
 
-</div>
+                </div>
 
-))
+                <button
+                  className="apply-btn"
+                  onClick={() =>
+                    navigate(`/apply/${job._id}`)
+                  }
+                >
 
-}
+                  Apply
 
-</div>
+                </button>
 
-</div>
+              </div>
 
-);
+            ))
+
+        }
+
+      </div>
+
+    </div>
+
+  );
 
 }
 

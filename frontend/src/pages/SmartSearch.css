@@ -1,43 +1,75 @@
 .smart-search-page{
     padding:40px;
-    background:#f7f9fc;
+    background:#f5f7fc;
     min-height:100vh;
     }
     
     .smart-search-page h1{
     margin-bottom:30px;
-    color:#222;
+    color:#1f2937;
     }
     
-    .search-filters{
-    display:flex;
-    gap:20px;
+    .search-container{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
     margin-bottom:30px;
-    flex-wrap:wrap;
     }
     
-    .search-filters input,
-    .search-filters select{
-    padding:15px;
+    .input-box{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    }
+    
+    .input-box label{
+    display:block;
+    font-weight:600;
+    margin-bottom:10px;
+    color:#444;
+    }
+    
+    .input-box input{
+    width:100%;
+    padding:14px;
     border:none;
-    border-radius:15px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    width:250px;
+    outline:none;
+    background:#f3f4f6;
+    border-radius:12px;
     font-size:15px;
+    }
+    
+    .search-btn{
+    margin-bottom:40px;
+    background:#4f46e5;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    font-size:16px;
+    font-weight:600;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.3s;
+    }
+    
+    .search-btn:hover{
+    background:#4338ca;
     }
     
     .search-grid{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
+    repeat(auto-fit,minmax(330px,1fr));
     gap:25px;
     }
     
     .search-card{
     background:white;
     padding:25px;
-    border-radius:20px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    border-radius:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
     transition:.3s;
     }
     
@@ -45,29 +77,55 @@
     transform:translateY(-5px);
     }
     
+    .search-card h2{
+    margin-bottom:15px;
+    color:#111827;
+    }
+    
+    .search-card p{
+    margin-bottom:10px;
+    color:#555;
+    }
+    
     .skill-tags{
     display:flex;
-    gap:10px;
     flex-wrap:wrap;
-    margin-top:15px;
-    margin-bottom:20px;
+    gap:10px;
+    margin-top:20px;
+    margin-bottom:25px;
     }
     
     .skill-tags span{
-    background:#edf2ff;
     padding:8px 15px;
+    background:#eef2ff;
+    color:#4f46e5;
     border-radius:30px;
-    color:#4c6fff;
-    font-size:13px;
+    font-size:14px;
     font-weight:600;
     }
     
     .apply-btn{
-    background:#4c6fff;
-    color:white;
+    width:100%;
+    padding:15px;
     border:none;
-    padding:12px 20px;
-    border-radius:12px;
-    cursor:pointer;
+    background:#4f46e5;
+    color:white;
+    font-size:15px;
     font-weight:600;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.3s;
+    }
+    
+    .apply-btn:hover{
+    background:#4338ca;
+    }
+    
+    .empty-results{
+    width:100%;
+    grid-column:1/-1;
+    text-align:center;
+    font-size:22px;
+    color:gray;
+    padding:70px 0;
     }
