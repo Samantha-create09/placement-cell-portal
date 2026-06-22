@@ -19,12 +19,12 @@ function AdminApplications(){
 
       const appsRes =
         await axios.get(
-          "${import.meta.env.VITE_API_URL}/api/applications"
+          '${import.meta.env.VITE_API_URL}/api/applications'
         );
 
       const jobsRes =
         await axios.get(
-          "${import.meta.env.VITE_API_URL}/api/jobs"
+          '${import.meta.env.VITE_API_URL}/api/jobs'
         );
 
       const jobs =

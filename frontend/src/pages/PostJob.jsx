@@ -35,7 +35,7 @@ const { user } = useAuth();
     try{
 
       await axios.post(
-  "${import.meta.env.VITE_API_URL}/api/jobs",
+  '${import.meta.env.VITE_API_URL}/api/jobs',
   {
 
     ...job,
