@@ -24,7 +24,7 @@ function Login() {
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         formData
       );
-      
+
       if(formData.role !== res.data.user.role){
 
         alert(
@@ -56,9 +56,21 @@ function Login() {
         navigate("/admin-dashboard");
       }
     } catch (err) {
-      alert("Login failed. Check credentials.");
-      console.log(err);
-    }
+
+  console.log("FULL ERROR:", err);
+
+  console.log(
+    "Response Data:",
+    err.response?.data
+  );
+
+  alert(
+    err.response?.data?.message ||
+    err.message ||
+    "Login failed"
+  );
+
+}
   };
 
   return (
