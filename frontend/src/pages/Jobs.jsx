@@ -43,26 +43,48 @@ function Jobs() {
 
         {jobs.map((job) => (
 
-          <div
-            key={job._id}
-            className="job-card"
-          >
-
-            <h2>{job.title}</h2>
-
-            <p>{job.company}</p>
-
-            <p>{job.location}</p>
-
-            <button
-              onClick={() =>
-                navigate(`/apply/${job._id}`)
-              }
-            >
-              Apply
-            </button>
-
-          </div>
+          
+      <div
+      className="job-card"
+      key={job._id}
+    >
+    
+      <h3>
+        {job.title}
+      </h3>
+    
+      <p>
+        <strong>
+          {job.company}
+        </strong>
+      </p>
+    
+      <p>
+        📍 {job.location}
+      </p>
+    
+      <p>
+        💰 ₹ {job.salary}
+      </p>
+    
+      <p>
+        🕒 {job.jobType}
+      </p>
+    
+      <p>
+        {job.description}
+      </p>
+    
+      <button
+        className="apply-btn"
+        onClick={() =>
+          navigate(`/apply/${job._id}`)
+        }
+      >
+        Apply
+      </button>
+    
+    </div>
 
         ))}
 
