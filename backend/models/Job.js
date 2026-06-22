@@ -23,6 +23,16 @@
 
     skills:[String],
 
+    minCgpa:{
+      type:Number,
+      default:0
+      },
+      
+      branch:{
+      type:String,
+      default:"All"
+      },
+
     deadline:Date,
 
     applicants:{

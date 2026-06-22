@@ -28,6 +28,10 @@ async(req,res)=>{
         .map(skill=>skill.trim())
         : [],
         
+        branch:req.body.branch,
+
+        minCgpa:req.body.minCgpa,
+
         resume:
         req.file
         ? `/uploads/${req.file.filename}`
