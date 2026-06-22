@@ -19,60 +19,66 @@ function Login() {
   };
 
   const handleLogin = async () => {
+
     try {
-      axios.post(
+  
+      console.log("Sending:", formData);
+  
+      const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         formData
       );
-
-      if(formData.role !== res.data.user.role){
-
+  
+      console.log("Response:", res.data);
+  
+      if (formData.role !== res.data.user.role) {
+  
         alert(
           `This account belongs to ${res.data.user.role}`
         );
-      
+  
         return;
-      
       }
-
+  
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      // store token + user globally
+  
       login(res.data);
-
-      // ROLE BASED REDIRECT
+  
       const role = res.data.user.role;
-
+  
       if (role === "student") {
         navigate("/student-dashboard");
       }
+  
       else if (role === "company") {
         navigate("/company-dashboard");
       }
-      else if (role === "mentor") {
+  
+      else {
         navigate("/admin-dashboard");
       }
-      else if (role === "admin") {
-        navigate("/admin-dashboard");
-      }
-    } catch (err) {
-
-  console.log("FULL ERROR:", err);
-
-  console.log(
-    "Response Data:",
-    err.response?.data
-  );
-
-  alert(
-    err.response?.data?.message ||
-    err.message ||
-    "Login failed"
-  );
-
-}
+  
+    }
+  
+    catch (err) {
+  
+      console.log("FULL ERROR:", err);
+  
+      console.log(
+        "BACKEND RESPONSE:",
+        err.response?.data
+      );
+  
+      alert(
+        err.response?.data?.message ||
+        "Login failed"
+      );
+  
+    }
+  
   };
-
+  
   return (
     <div className="auth-container">
 
