@@ -18,76 +18,84 @@ router.get("/:studentId", async (req, res) => {
 
   try {
 
-    const Student =
-require("../models/Student");
+    const User = require("../models/User");
 
-const student =
-await Student.findOne({
+    const user = await User.findById(
+      req.params.studentId
+    );
 
-userId: req.params.studentId
+    if (!user) {
 
-});
+      return res.status(404).json({
+        message: "User not found"
+      });
 
-const applications =
-await Application.find({
+    }
 
-email: student.email
+    const applications =
+      await Application.find({
 
-});
+        email: user.email
+
+      });
 
     const totalApplications =
       applications.length;
 
-      const shortlisted =
+    const shortlisted =
       applications.filter(
-      
-      app =>
-      
-      app.status === "Shortlisted"
-      
-      ||
-      
-      app.status === "Interview Scheduled"
-      
-      ||
-      
-      app.status === "Selected"
-      
+
+        app =>
+
+          app.status === "Shortlisted" ||
+
+          app.status === "Interview Scheduled" ||
+
+          app.status === "Selected"
+
       ).length;
 
     const interviews =
       applications.filter(
+
         app =>
-        app.status ===
-        "Interview Scheduled"
+
+          app.status === "Interview Scheduled"
+
       ).length;
 
     const offers =
       applications.filter(
+
         app =>
-        app.status ===
-        "Selected"
+
+          app.status === "Selected"
+
       ).length;
 
     res.json({
-      applications:
-      totalApplications,
+
+      applications: totalApplications,
 
       shortlisted,
 
       interviews,
 
       offers
+
     });
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     res.status(500).json({
-      message:error.message
+
+      message: error.message
+
     });
 
   }
 
 });
-
 module.exports = router;
