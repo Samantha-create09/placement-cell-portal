@@ -193,6 +193,26 @@ function AdminApplications(){
 
               <p>
 
+🎓 Branch :
+
+{" "}
+
+{app.branch || "All"}
+
+</p>
+
+<p>
+
+📊 Minimum CGPA :
+
+{" "}
+
+{app.minCgpa ?? 0}
+
+</p>
+
+              <p>
+
                 <strong>
                   Applied:
                 </strong>

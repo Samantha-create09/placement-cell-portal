@@ -142,7 +142,7 @@ function SmartSearch() {
                         );
                         
                         }
-                        
+
     setFilteredJobs(results);
 
   };
@@ -341,21 +341,40 @@ Best Match
                   💼 {job.jobType}
                 </p>
 
-                <div className="skill-tags">
+                <p>
 
-                  {
+                <p>
 
-                    job.skills.map((skill, index) => (
+ <p>
+  Skills:
+  {" "}
+  {job.skills?.join(", ")}
+</p>
 
-                      <span key={index}>
-                        {skill}
-                      </span>
+🎓 Branch :
+{" "}
+{job.branch || "All"}
+</p>
 
-                    ))
+<p>
 
-                  }
+📊 Minimum CGPA :
+{" "}
+{job.minCgpa ?? 0}
+</p>        
 
-                </div>
+📅 Deadline :
+
+{
+
+new Date(job.deadline)
+
+.toLocaleDateString()
+
+}
+
+</p>
+
 
                 <button
                   className="apply-btn"

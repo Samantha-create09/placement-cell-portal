@@ -320,6 +320,93 @@ const [editData, setEditData] =
 
 <div className="info-card">
 
+<h4>
+Eligible Branch
+</h4>
+
+{
+
+isEditing ?
+
+<input
+
+className="edit-input"
+
+value={editData.branch || ""}
+
+onChange={(e)=>
+
+setEditData({
+
+...editData,
+
+branch:e.target.value
+
+})
+
+}
+
+/>
+
+:
+
+<p>
+
+{job.branch || "All"}
+
+</p>
+
+}
+
+</div>
+
+
+<div className="info-card">
+
+<h4>
+Minimum CGPA
+</h4>
+
+{
+
+isEditing ?
+
+<input
+
+type="number"
+
+className="edit-input"
+
+value={editData.minCgpa || 0}
+
+onChange={(e)=>
+
+setEditData({
+
+...editData,
+
+minCgpa:e.target.value
+
+})
+
+}
+
+/>
+
+:
+
+<p>
+
+{job.minCgpa ?? 0}
+
+</p>
+
+}
+
+</div>
+
+<div className="info-card">
+
 <h4>Job Type</h4>
 
 {
@@ -436,6 +523,28 @@ const [editData, setEditData] =
 }
 
 <h3>
+
+Eligibility
+
+</h3>
+
+<p>
+
+🎓 Branch :
+
+{job.branch || "All"}
+
+</p>
+
+<p>
+
+📊 Minimum CGPA :
+
+{job.minCgpa ?? 0}
+
+</p>
+
+<h3>
   Deadline
 </h3>
 
@@ -510,11 +619,35 @@ const [editData, setEditData] =
   {app.email}
 </p>
 
-<p>
-
+<p
+style={{
+color:
+Number(app.cgpa)>=Number(app.minCgpa)
+?
+"green"
+:
+"red"
+}}
+>
   CGPA:
   {" "}
   {app.cgpa || "N/A"}
+
+</p>
+
+<p>
+
+Eligible Branch :
+
+{app.branch || "All"}
+
+</p>
+
+<p>
+
+Required CGPA :
+
+{app.minCgpa ?? 0}
 
 </p>
 

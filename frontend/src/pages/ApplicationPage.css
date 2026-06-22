@@ -64,3 +64,19 @@
   button:hover {
     transform: translateY(-3px);
   }
+
+  .eligibility-box{
+
+    background:#eef2ff;
+    padding:18px;
+    border-radius:15px;
+    margin-bottom:20px;
+    
+    }
+    
+    .eligibility-box h3{
+    
+    color:#4f46e5;
+    margin-bottom:10px;
+    
+    }

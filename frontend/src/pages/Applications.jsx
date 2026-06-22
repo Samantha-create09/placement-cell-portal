@@ -135,6 +135,26 @@ function Applications() {
     </p>
 
     <p>
+
+<strong>Eligible Branch:</strong>
+
+{" "}
+
+{app.branch || "All"}
+
+</p>
+
+<p>
+
+<strong>Minimum CGPA:</strong>
+
+{" "}
+
+{app.minCgpa ?? 0}
+
+</p>
+
+    <p>
       <strong>Applied:</strong>
       {" "}
       {

@@ -138,6 +138,21 @@ function ManageJobs() {
                 }
 
               </p>
+             
+              <p>
+
+🎓 Branch :
+{" "}
+{job.branch || "All"}
+</p>
+
+<p>
+
+📊 Minimum CGPA :
+{" "}
+{job.minCgpa ?? 0}
+
+</p>
 
               <p>
 

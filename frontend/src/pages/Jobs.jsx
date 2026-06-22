@@ -58,7 +58,7 @@ function Jobs() {
           {job.company}
         </strong>
       </p>
-    
+
       <p>
         📍 {job.location}
       </p>
@@ -71,6 +71,25 @@ function Jobs() {
         🕒 {job.jobType}
       </p>
     
+<p>
+  Skills:
+  {" "}
+  {job.skills?.join(", ")}
+</p>
+
+<p>
+🎓 Eligible Branch :
+{" "}
+{job.branch || "All"}
+</p>
+
+<p>
+📊 Minimum CGPA :
+{" "}
+{job.minCgpa ?? 0}
+</p>
+
+
       <p>
         {job.description}
       </p>

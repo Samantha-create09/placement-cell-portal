@@ -106,13 +106,13 @@ repeat(auto-fit,minmax(280px,1fr));
     
     .apply-btn{
     width:100%;
-    padding:15px;
+    padding:12px;
     border:none;
     background:#4f46e5;
     color:white;
     font-size:15px;
     font-weight:600;
-    border-radius:14px;
+    border-radius:11px;
     cursor:pointer;
     transition:.3s;
     }

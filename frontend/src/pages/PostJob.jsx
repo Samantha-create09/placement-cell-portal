@@ -6,6 +6,9 @@ import { useAuth } from "../context/AuthContext";
 function PostJob() {
 const navigate = useNavigate();
 const { user } = useAuth();
+const [minCgpa,setMinCgpa]=useState("");
+const [branch,setBranch]=useState("");
+
   const [job,setJob] = useState({
     
     title:"",
@@ -39,9 +42,11 @@ const { user } = useAuth();
   {
 
     ...job,
+    minCgpa,
+    branch,
 
     createdBy:user.id
-
+   
   }
 );
 
@@ -93,6 +98,20 @@ navigate("/company-dashboard");
           placeholder="Full Time / Internship"
           onChange={handleChange}
         />
+
+<input
+type="number"
+placeholder="Minimum CGPA"
+value={minCgpa}
+onChange={(e)=>setMinCgpa(e.target.value)}
+/>
+
+<input
+type="text"
+placeholder="Eligible Branch"
+value={branch}
+onChange={(e)=>setBranch(e.target.value)}
+/>
 
         <input
           name="skills"

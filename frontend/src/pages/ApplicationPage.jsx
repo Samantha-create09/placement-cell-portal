@@ -9,7 +9,7 @@ function ApplicationPage() {
   const [resume, setResume] =
   useState(null);
   const { user } = useAuth();
-
+  
   const [formData, setFormData] = useState({
 
     studentId: user.id,
@@ -26,6 +26,35 @@ function ApplicationPage() {
   
   });
 
+  const [job,setJob]=useState(null);
+  useEffect(()=>{
+
+    fetchJob();
+    
+    },[]);
+    
+    const fetchJob = async()=>{
+    
+    try{
+    
+    const res=await axios.get(
+    
+    `${import.meta.env.VITE_API_URL}/api/jobs/${id}`
+    
+    );
+    
+    setJob(res.data);
+    
+    }
+    
+    catch(err){
+    
+    console.log(err);
+    
+    }
+    
+    }
+
   const handleChange = (e) => {
 
     setFormData({
@@ -39,6 +68,24 @@ function ApplicationPage() {
 
     e.preventDefault();
   
+    if(
+
+      job &&
+      
+      Number(formData.cgpa)<Number(job.minCgpa)
+      
+      ){
+      
+      alert(
+      
+      `Minimum CGPA required is ${job.minCgpa}`
+      
+      );
+      
+      return;
+      
+      }
+
     try {
   
       const data = new FormData();
@@ -67,6 +114,16 @@ function ApplicationPage() {
         "skills",
         formData.skills
       );
+
+      data.append(
+        "branch",
+        job.branch
+        );
+        
+        data.append(
+        "minCgpa",
+        job.minCgpa
+        );
   
       if (resume) {
   
@@ -109,6 +166,35 @@ function ApplicationPage() {
       <div className="application-card">
 
         <h1>Apply For Job</h1>
+
+        {
+job && (
+
+<div className="eligibility-box">
+
+<h3>
+Eligibility
+</h3>
+
+<p>
+
+🎓 Branch :
+{" "}
+{job.branch || "All"}
+</p>
+
+<p>
+
+📊 Minimum CGPA :
+{" "}
+{job.minCgpa ?? 0}
+
+</p>
+
+</div>
+
+)
+}
 
         <form onSubmit={handleSubmit}>
 
