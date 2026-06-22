@@ -5,7 +5,15 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+  origin:[
+  "http://localhost:5173",
+  "https://placement-cell-portal-pi.vercel.app"
+  ],
+  credentials:true
+  })
+  );
 
 app.use(express.json());
 const path = require("path");
