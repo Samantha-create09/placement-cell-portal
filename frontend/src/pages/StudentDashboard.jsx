@@ -477,7 +477,19 @@ job.deadline
       <p>
         🕒 {job.jobType}
       </p>
-    
+      
+<p>
+🎓 Eligible Branch :
+{" "}
+{job.branch || "All"}
+</p>
+
+<p>
+📊 Minimum CGPA :
+{" "}
+{job.minCgpa ?? 0}
+</p>
+
       <p>
         {job.description}
       </p>

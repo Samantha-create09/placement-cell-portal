@@ -187,6 +187,10 @@ totalInterviews
             Manage Jobs
           </Link>
 
+<Link to="/applicant-search">
+Applicant Smart Search
+</Link>
+
         </nav>
 
         <button

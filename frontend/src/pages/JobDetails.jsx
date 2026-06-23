@@ -522,27 +522,62 @@ minCgpa:e.target.value
   </div>
 }
 
-<h3>
+<div className="info-card">
 
-Eligibility
+<h4>Branch</h4>
 
-</h3>
+{
+isEditing ?
+
+<input
+className="edit-input"
+value={editData.branch || ""}
+onChange={(e)=>
+setEditData({
+...editData,
+branch:e.target.value
+})
+}
+/>
+
+:
 
 <p>
-
-🎓 Branch :
-
 {job.branch || "All"}
-
 </p>
+
+}
+
+</div>
+
+<div className="info-card">
+
+<h4>Minimum CGPA</h4>
+
+{
+isEditing ?
+
+<input
+type="number"
+className="edit-input"
+value={editData.minCgpa || 0}
+onChange={(e)=>
+setEditData({
+...editData,
+minCgpa:e.target.value
+})
+}
+/>
+
+:
 
 <p>
-
-📊 Minimum CGPA :
-
 {job.minCgpa ?? 0}
-
 </p>
+
+}
+
+</div>
 
 <h3>
   Deadline

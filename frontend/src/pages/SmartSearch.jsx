@@ -16,6 +16,8 @@ function SmartSearch() {
   const [company, setCompany] = useState("");
   const [skill, setSkill] = useState("");
   const [salary, setSalary] = useState("");
+const [cgpa,setCgpa]=useState("");
+const [branch,setBranch]=useState("");
 
   useEffect(() => {
     fetchJobs();
@@ -77,6 +79,25 @@ function SmartSearch() {
 
     }
 
+    if (cgpa) {
+
+        results = results.filter(
+          job =>
+            Number(job.minCgpa || 0) <= Number(cgpa)
+        );
+      
+      }
+      
+      if (branch) {
+      
+        results = results.filter(
+          job =>
+            job.branch === "All" ||
+            job.branch === branch
+        );
+      
+      }
+      
     if (salary) {
 
       results = results.filter(
@@ -97,6 +118,8 @@ function SmartSearch() {
         );
         
         }
+
+        
 
         if(sortBy==="salary"){
 
@@ -255,6 +278,56 @@ Part Time
 </select>
 
 </div>
+
+<select
+value={branch}
+onChange={(e)=>setBranch(e.target.value)}
+>
+
+<option value="">
+All Branches
+</option>
+
+<option value="BSc Computer Science">
+BSc Computer Science
+</option>
+
+<option value="MSc Computer Science">
+MSc Computer Science
+</option>
+
+<option value="BCA">
+BCA
+</option>
+
+<option value="MCA">
+MCA
+</option>
+
+<option value="BTech">
+BTech
+</option>
+
+<option value="MTech">
+MTech
+</option>
+
+<option value="BE">
+BE
+</option>
+
+<option value="ME">
+ME
+</option>
+
+</select>
+
+<input
+type="number"
+placeholder="Minimum CGPA"
+value={cgpa}
+onChange={(e)=>setCgpa(e.target.value)}
+/>
 
 <div className="input-box">
 

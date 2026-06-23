@@ -134,6 +134,18 @@ function ApplicationPage() {
   
       }
   
+      if(
+        !formData.fullName ||
+        !formData.email ||
+        !formData.cgpa
+        ){
+        
+        alert("Fill all details");
+        
+        return;
+        
+        }
+
       await axios.post(
         `${import.meta.env.VITE_API_URL}/api/applications`,
         data,
@@ -199,24 +211,28 @@ Eligibility
         <form onSubmit={handleSubmit}>
 
           <input
+           required
            name="fullName"
             placeholder="Full Name"
             onChange={handleChange}
           />
 
           <input
+            required
             name="email"
             placeholder="Email"
             onChange={handleChange}
           />
 
           <input
+            required
             name="cgpa"
             placeholder="CGPA"
             onChange={handleChange}
           />
 
           <input
+            required
             name="skills"
             placeholder="Skills"
             onChange={handleChange}
@@ -226,6 +242,7 @@ Eligibility
 </label>
 
 <input
+ required
   type="file"
   accept=".pdf"
   onChange={(e) =>

@@ -21,6 +21,7 @@ import AdminJobs from "./pages/AdminJobs";
 import AdminApplications from "./pages/AdminApplications";  
 
 import SmartSearch from "./pages/SmartSearch";
+import CompanyApplicantSearch from "./pages/CompanyApplicantSearch";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -160,6 +161,11 @@ function App() {
 <Route
 path="/smart-search"
 element={<SmartSearch/>}
+/>
+
+<Route
+path="/applicant-search"
+element={<CompanyApplicantSearch/>}
 />
 
 </Routes>
